@@ -33,9 +33,7 @@ window.configure(bg=color_bg)
 main_frame = tkinter.Frame(window, bg=color_bg)
 main_frame.pack(padx=12, pady=12)
 
-# =====================
-# HISTORICO
-# =====================
+
 history_frame = tkinter.Frame(main_frame, bg=color_bg, width=160)
 history_frame.grid(row=0, column=1, rowspan=20, sticky="ns", padx=(10, 0))
 history_frame.grid_propagate(False)
@@ -52,7 +50,7 @@ history_title.pack()
 
 history_listbox = tkinter.Listbox(
     history_frame,
-    bg=color_bg,          # ✅ mesma cor do fundo
+    bg=color_bg,          
     fg="#8888AA",
     font=("Helvetica Neue", 10),
     selectbackground=color_purple,
@@ -77,24 +75,20 @@ clear_hist_btn = tkinter.Button(
 )
 clear_hist_btn.pack(pady=6)
 
-# =====================
-# CALCULADORA
-# =====================
+
 calc_frame = tkinter.Frame(main_frame, bg=color_bg)
 calc_frame.grid(row=0, column=0)
 
-# =====================
-# DISPLAY
-# =====================
+
 display_frame = tkinter.Frame(
-    calc_frame, bg=color_bg, pady=6)  # ✅ mesma cor do fundo
+    calc_frame, bg=color_bg, pady=6) 
 display_frame.grid(row=0, column=0, columnspan=4, sticky="we", pady=(0, 8))
 
 label = tkinter.Label(
     display_frame,
     text="0",
     font=("Helvetica Neue", 42, "normal"),
-    background=color_bg,   # ✅ mesma cor do fundo
+    background=color_bg,  
     foreground=color_white,
     width=9,
     anchor="e",
@@ -107,7 +101,7 @@ expression_label = tkinter.Label(
     display_frame,
     text="",
     font=("Helvetica Neue", 11),
-    background=color_bg,   # ✅ mesma cor do fundo
+    background=color_bg,  
     foreground="#555577",
     width=9,
     anchor="e",
@@ -121,7 +115,7 @@ expression = ""
 def play_click():
     """som de tecla suave — frequencia baixa e duracao curtissima"""
     try:
-        winsound.Beep(300, 20)  # ✅ frequencia 300hz, 20ms (bem suave)
+        winsound.Beep(300, 20) 
     except:
         pass
 
@@ -192,9 +186,9 @@ def get_colors(text):
 
 def make_rounded_button(parent, text, bg, hover, fg, cmd, wide=False):
     """cria botao arredondado com canvas"""
-    w = 130 if wide else 62  # ✅ tamanho fixo e uniforme
+    w = 130 if wide else 62  
     h = 62
-    r = 20  # ✅ raio uniforme para todos os botoes
+    r = 20  
 
     canvas = tkinter.Canvas(parent, width=w, height=h,
                             bg=color_bg, highlightthickness=0, cursor="hand2")
@@ -202,7 +196,7 @@ def make_rounded_button(parent, text, bg, hover, fg, cmd, wide=False):
     def draw(color):
         canvas.delete("all")
         x1, y1, x2, y2 = 2, 2, w-2, h-2
-        # ✅ desenho mais limpo com create_rounded usando arcos
+       
         canvas.create_arc(x1, y1, x1+2*r, y1+2*r, start=90,
                           extent=90, fill=color, outline=color)
         canvas.create_arc(x2-2*r, y1, x2, y1+2*r, start=0,
@@ -227,9 +221,7 @@ def make_rounded_button(parent, text, bg, hover, fg, cmd, wide=False):
     return canvas
 
 
-# =====================
-# CRIACAO DOS BOTOES
-# =====================
+
 for row in range(len(button_values)):
     for column in range(len(button_values[row])):
         text = button_values[row][column]
